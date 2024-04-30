@@ -24,7 +24,7 @@ const requestBody =
     ]
 }
 
-test('Status code should be....', async () => {
+test('Status code should be 200 when changing a kit....', async () => {
 	let actualStatusCode;
     try {
 		const response = await fetch(`${config.API_URL}/api/v1/kits/6`, {
@@ -41,7 +41,7 @@ test('Status code should be....', async () => {
 	expect(actualStatusCode).toBe(200);
 });
 
-test('Reponse body should change the kit', async () => {
+test('Reponse should valdiate and return true when changing the kit', async () => {
 	let actualResponseBody;
     try {
 		const response = await fetch(`${config.API_URL}/api/v1/kits/6`, {
@@ -55,5 +55,5 @@ test('Reponse body should change the kit', async () => {
 	} catch (error) {
 		console.error(error);
 	}
-	expect(actualResponseBody["_ip"]).toBe("::1");
+	expect(actualResponseBody["ok"]).toBe(true);
 });
